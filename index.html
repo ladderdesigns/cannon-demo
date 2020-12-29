@@ -19,30 +19,30 @@
     <div style="margin: 4rem;">
         <canvas id="line-chart" width="600" height="300"></canvas>
     </div>
+    <button id="scenarioOne">Scenario #1</button>
+    <button id="scenarioTwo">Scenario #1</button>
+    <button id="scenarioThree">Scenario #1</button>
 
 
 </body>
 <script>
-    new Chart(document.getElementById("line-chart"), {
+
+    const scenarioOne = {
+        data: [.168, .170, .178, .190, .203, .276, .408, .547, .375, .234],
+        label: "Low",
+        borderColor: "#3cba9f",
+        fill: false
+    }
+
+    window.randomScalingFactor = function () {
+        return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.random() * 100;
+    };
+
+    const config = {
         type: 'line',
         data: {
             labels: ["time unknown", "12:42 AM", "time unknown", "time unknown", "time unknown", "2:58 AM", "time unknown", "time unknown", "time unknown", "time unknown"],
-            datasets: [{
-                data: [.86, .114, .106, .106, .107, .111, .133, .221, .783, .2478],
-                label: "High",
-                borderColor: "#3e95cd",
-                fill: false
-            }, {
-                data: [.282, .350, .1411, .502, .635, .809, .947, .1402, .3700, .1200],
-                label: "Medium",
-                borderColor: "#8e5ea2",
-                fill: false
-            }, {
-                data: [.168, .170, .178, .190, .203, .276, .408, .547, .375, .234],
-                label: "Low",
-                borderColor: "#3cba9f",
-                fill: false
-            }
+            datasets: [
             ]
         },
         options: {
@@ -76,7 +76,22 @@
                 }]
             }
         }
+    };
+
+    window.onload = function () {
+        var ctx = document.getElementById('line-chart').getContext('2d');
+        window.myLine = new Chart(ctx, config);
+    };
+
+    document.getElementById('scenarioOne').addEventListener('click', function () {
+        if (!config.data.datasets.some(scenario => scenario.label == "Low")) {
+            config.data.datasets.push(scenarioOne);
+        }
+        window.myLine.update();
     });
+
+
+
 
 </script>
 
