@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>BAC Analysis - Dr. Robert Cannon</title>
+    <title>BAC Analysis - Robert Cannon M.D.</title>
     <meta name="description" content="BAC Analysis - Robert">
     <meta name="" content="">
 
@@ -19,18 +19,37 @@
     <div style="margin: 4rem;">
         <canvas id="line-chart" width="600" height="300"></canvas>
     </div>
-    <button id="scenarioOne">Scenario #1</button>
-    <button id="scenarioTwo">Scenario #1</button>
-    <button id="scenarioThree">Scenario #1</button>
+    <div style="margin-left: 4rem;">
+        <button style="margin-right: 2rem;" id="scenarioOne">Scenario #1</button>
+        <button style="margin-right: 2rem;" id="scenarioTwo">Scenario #2</button>
+        <button style="margin-right: 2rem;" id="scenarioThree">Scenario #3</button>
+    </div>
 
 
 </body>
 <script>
 
     const scenarioOne = {
-        data: [.168, .170, .178, .190, .203, .276, .408, .547, .375, .234],
+        data: [0.0, 0.162, 0.324, 0.16, 0.125, 0.08, 0.06, 0.045, .0375, .0234],
         label: "Low",
-        borderColor: "#3cba9f",
+        backgroundColor: "#3B82F6",
+        borderColor: "#3B82F6",
+        fill: false
+    }
+
+    const scenarioTwo = {
+        data: [0.0, 0.052, 0.264, 0.16, 0.125, 0.06, 0.05, 0.035, .02, .01],
+        label: "Medium",
+        backgroundColor: "#10B981",
+        borderColor: "#10B981",
+        fill: false
+    }
+
+    const scenarioThree = {
+        data: [0.0, 0.042, 0.194, 0.16, 0.125, 0.11, 0.075, 0.045, .0375, .0234],
+        label: "High",
+        backgroundColor: "#EF4444",
+        borderColor: "#EF4444",
         fill: false
     }
 
@@ -48,7 +67,7 @@
         options: {
             title: {
                 display: true,
-                text: 'BAC changing over time',
+                text: 'BAC Analysis - Robert Cannon M.D.',
 
             },
             animations: {
@@ -56,6 +75,10 @@
             },
             scales: {
                 xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Known Times'
+                    },
                     ticks: {
                         callback: function (value, index, values) {
                             if (value === '12:42 AM' || value === '2:58 AM') {
@@ -66,21 +89,18 @@
 
                 }],
                 yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Blood Alcohol Concentration (g/ml)'
+                    },
                     ticks: {
                         callback: function (value, index, values) {
-
                             return value
-
                         }
                     }
                 }]
             }
         }
-    };
-
-    window.onload = function () {
-        var ctx = document.getElementById('line-chart').getContext('2d');
-        window.myLine = new Chart(ctx, config);
     };
 
     document.getElementById('scenarioOne').addEventListener('click', function () {
@@ -90,8 +110,24 @@
         window.myLine.update();
     });
 
+    document.getElementById('scenarioTwo').addEventListener('click', function () {
+        if (!config.data.datasets.some(scenario => scenario.label == "Medium")) {
+            config.data.datasets.push(scenarioTwo);
+        }
+        window.myLine.update();
+    });
 
+    document.getElementById('scenarioThree').addEventListener('click', function () {
+        if (!config.data.datasets.some(scenario => scenario.label == "High")) {
+            config.data.datasets.push(scenarioThree);
+        }
+        window.myLine.update();
+    });
 
+    window.onload = function () {
+        var ctx = document.getElementById('line-chart').getContext('2d');
+        window.myLine = new Chart(ctx, config);
+    };
 
 </script>
 
