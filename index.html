@@ -1,0 +1,83 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>BAC Analysis - Dr. Robert Cannon</title>
+    <meta name="description" content="BAC Analysis - Robert">
+    <meta name="" content="">
+
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+        integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <script src="scripts.js"></script>
+    <div style="margin: 4rem;">
+        <canvas id="line-chart" width="600" height="300"></canvas>
+    </div>
+
+
+</body>
+<script>
+    new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+            labels: ["time unknown", "12:42 AM", "time unknown", "time unknown", "time unknown", "2:58 AM", "time unknown", "time unknown", "time unknown", "time unknown"],
+            datasets: [{
+                data: [.86, .114, .106, .106, .107, .111, .133, .221, .783, .2478],
+                label: "High",
+                borderColor: "#3e95cd",
+                fill: false
+            }, {
+                data: [.282, .350, .1411, .502, .635, .809, .947, .1402, .3700, .1200],
+                label: "Medium",
+                borderColor: "#8e5ea2",
+                fill: false
+            }, {
+                data: [.168, .170, .178, .190, .203, .276, .408, .547, .375, .234],
+                label: "Low",
+                borderColor: "#3cba9f",
+                fill: false
+            }
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'BAC changing over time',
+
+            },
+            animations: {
+                duration: 10000,
+            },
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        callback: function (value, index, values) {
+                            if (value === '12:42 AM' || value === '2:58 AM') {
+                                return value
+                            }
+                        }
+                    },
+
+                }],
+                yAxes: [{
+                    ticks: {
+                        callback: function (value, index, values) {
+
+                            return value
+
+                        }
+                    }
+                }]
+            }
+        }
+    });
+
+</script>
+
+</html>
