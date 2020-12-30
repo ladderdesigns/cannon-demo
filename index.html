@@ -16,17 +16,16 @@
     <div style="margin: 4rem;">
         <canvas id="line-chart" width="600" height="280"></canvas>
     </div>
-    <div class="flex justify-center w-full h-12 ">
-        <button class="px-4 py-1 mx-16 text-white bg-blue-500 rounded-md shadow hover:bg-blue-600"
-            id="scenarioOne">Scenario
+    <div class="flex justify-center w-full h-12 -mt-8" style="font-family: 'Helvetica Neue' , 'Helvetica' , 'Arial' ,
+        sans-serif'">
+        <button class="px-4 py-1 mx-16 text-white bg-blue-500 rounded-md shadow hover:bg-blue-600" id="scenarioOne">
+            Scenario
             #1</button>
         <button class="px-4 py-1 mx-16 text-white bg-green-500 rounded-lg hover:bg-green-600" id="scenarioTwo">Scenario
             #2</button>
         <button class="px-4 py-1 mx-16 text-white bg-red-500 rounded-lg hover:bg-red-600" id="scenarioThree">Scenario
             #3</button>
     </div>
-
-
 </body>
 <script>
 
@@ -53,9 +52,6 @@
         borderColor: "#3B82F6",
         fill: false
     }
-
-
-
     window.randomScalingFactor = function () {
         return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.random() * 100;
     };
@@ -72,17 +68,19 @@
             title: {
                 display: true,
                 text: 'BAC Analysis - Robert Cannon M.D.',
+                fontSize: 20,
+                fontFamily: "'Helvetica'"
 
             },
             scales: {
                 xAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: 'Known Times'
+                        labelString: 'Known Times (AM)'
                     },
                     ticks: {
                         callback: function (value, index, values) {
-                            if (value === '12:42 AM' || value === '2:58 AM') {
+                            if (value === '2:58 AM') {
                                 return value
                             }
                         }
@@ -96,7 +94,7 @@
                     },
                     ticks: {
                         callback: function (value, index, values) {
-                            return value
+
                         }
                     }
                 }]
