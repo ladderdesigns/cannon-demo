@@ -4,15 +4,36 @@ import { Meta } from "../layout/Meta";
 import { Main } from "../templates/Main";
 import { Line } from "react-chartjs-2";
 import { scenarioOne, scenarioTwo, scenarioThree } from "../utils/chartInfo";
+import "chartjs-plugin-annotation";
 
 const options = {
   responsive: true,
   maintainAspectRatio: true,
+
   title: {
     display: true,
     text: "BAC Analysis - Robert Cannon M.D.",
-    fontSize: 24,
+    fontSize: 26,
     fontFamily: "'Helvetica'",
+    fontColor: "#374151http://127.0.0.1:4040  ",
+  },
+  annotation: {
+    annotations: [
+      {
+        type: "line",
+        mode: "horizontal",
+        scaleID: "y-axis-0",
+        value: 0.16,
+        borderColor: "rgba(0, 0, 0, 0.1)",
+        borderWidth: 1,
+        borderDash: [10, 5],
+        showLine: false,
+        label: {
+          enabled: false,
+          content: "Test label",
+        },
+      },
+    ],
   },
   scales: {
     xAxes: [
@@ -21,8 +42,9 @@ const options = {
           display: true,
           labelString: "Known Times (AM)",
         },
+
         ticks: {
-          callback: function (value: String, index, values) {
+          callback: function (value: String) {
             if (value === "2:58 AM") {
               return value;
             }
@@ -36,8 +58,14 @@ const options = {
           display: true,
           labelString: "Blood Alcohol Concentration (g/ml)",
         },
+        gridLines: {
+          drawOnChartArea: false,
+        },
         ticks: {
-          callback: function (value, index, values) {
+          min: 0,
+          max: 0.5,
+          stepSize: 0.04,
+          callback: function (value) {
             if (value === 0.16) {
               return value;
             }
@@ -61,11 +89,12 @@ const initialData = {
     {
       data: [null, null, null, 0.16, null, null],
       label: "One measurement",
-      backgroundColor: "#374151",
-      borderColor: "#374151",
+      backgroundColor: "#78350F",
+      showLine: false,
+      borderColor: "#78350F",
       fill: false,
-      pointRadius: [0, 0, 0, 7, 0],
-      pointHoverBorderWidth: [0, 0, 0, 8, 0],
+      pointRadius: [0, 0, 0, 10, 0],
+      pointHoverBorderWidth: [0, 0, 0, 15, 0],
     },
   ],
 };
@@ -113,31 +142,42 @@ const Index = () => {
         <div className="flex w-full">
           <Line data={data} width={600} height={280} options={options}></Line>
         </div>
-        <div className="flex justify-center w-full mt-8">
-          <button className="px-4 py-2 font-semibold text-blue-700 bg-transparent border border-blue-500 rounded opacity-25 hover:bg-blue-500 hover:text-white hover:border-transparent">
-            Scenario one
-          </button>
+        <div className="flex justify-center w-full mt-12">
           <button
-            className="px-4 mx-16 text-white bg-green-500 rounded-lg shadow hover:bg-green-600"
+            className={
+              "px-4 py-2 font-semibold bg-transparent border rounded hover:text-white transition duration-300 ease-in-out  " +
+              (!scenarioOneShown
+                ? "opacity-25 text-green-700 border-green-500 hover:bg-green-500 hover:border-transparent"
+                : "text-white bg-green-500 border-green-500 hover:border-transparent ")
+            }
             onClick={() => applyScenarioOne()}
           >
             Scenario one
           </button>
           <button
-            className="px-4 mx-16 text-white bg-blue-500 rounded-lg shadow hover:bg-blue-600"
+            className={
+              "transition duration-300 ease-in-out px-4 py-2 mx-16 font-semibold bg-transparent border rounded hover:text-white  " +
+              (!scenarioTwoShown
+                ? "opacity-25 text-blue-700 border-blue-500 hover:bg-blue-500 hover:border-transparent"
+                : "text-white bg-blue-500 border-blue-500 hover:border-transparent ")
+            }
             onClick={() => applyScenarioTwo()}
           >
             Scenario two
           </button>
           <button
-            className="px-4 mx-16 text-white bg-red-500 rounded-lg shadow hover:bg-red-600"
+            className={
+              "transition duration-300 ease-in-out px-4 py-2 font-semibold bg-transparent border rounded hover:text-white  " +
+              (!scenarioThreeShown
+                ? "opacity-25 text-red-700 border-red-500 hover:bg-red-500 hover:border-transparent"
+                : "text-white bg-red-500 border-red-500 hover:border-transparent ")
+            }
             onClick={() => applyScenarioThree()}
           >
             Scenario three
           </button>
         </div>
       </div>
-      <div></div>
     </Main>
   );
 };
