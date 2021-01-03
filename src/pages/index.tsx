@@ -163,7 +163,7 @@ const Index = () => {
               }
               onClick={() => applyScenarioOne()}
             >
-              Scenario one
+              Scenario #1
             </button>
             <button
               className={
@@ -174,7 +174,7 @@ const Index = () => {
               }
               onClick={() => applyScenarioTwo()}
             >
-              Scenario two
+              Scenario #2
             </button>
             <button
               className={
@@ -185,7 +185,7 @@ const Index = () => {
               }
               onClick={() => applyScenarioThree()}
             >
-              Scenario three
+              Scenario #3
             </button>
           </div>
         </div>
