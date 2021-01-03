@@ -3,8 +3,8 @@ export const scenarioThree = {
   label: "Elevated curve",
   backgroundColor: "#EF4444",
   borderColor: "#EF4444",
-  pointRadius: [0, 0, 0, 7, 0, 0],
-  pointHoverBorderWidth: [0, 0, 0, 8, 0, 0],
+  pointRadius: [0, 0, 10, 10, 0, 0],
+  pointHoverBorderWidth: [0, 0, 15, 15, 0, 0],
   fill: false,
 };
 
@@ -13,17 +13,17 @@ export const scenarioOne = {
   label: "Typical curve",
   backgroundColor: "#10B981",
   borderColor: "#10B981",
-  pointRadius: [0, 0, 0, 7, 0, 0],
-  pointHoverBorderWidth: [0, 0, 0, 8, 0, 0],
+  pointRadius: [0, 0, 10, 10, 0, 0],
+  pointHoverBorderWidth: [0, 0, 15, 15, 0, 0],
   fill: false,
 };
 
 export const scenarioTwo = {
-  data: [0.0, 0.042, 0.244, 0.16, 0.084, 0.05],
+  data: [0.0, 0.072, 0.224, 0.16, 0.084, 0.05],
   label: "Depressed curve",
   backgroundColor: "#3B82F6",
   borderColor: "#3B82F6",
-  pointRadius: [0, 0, 0, 7, 0, 0],
-  pointHoverBorderWidth: [0, 0, 0, 8, 0, 0],
+  pointRadius: [0, 0, 10, 10, 0, 0],
+  pointHoverBorderWidth: [0, 0, 15, 15, 0, 0],
   fill: false,
 };

@@ -10,6 +10,12 @@ const options = {
   responsive: true,
   maintainAspectRatio: true,
 
+  legend: {
+    position: "right",
+    labels: {
+      fontSize: 16,
+    },
+  },
   title: {
     display: true,
     text: "BAC Analysis - Robert Cannon M.D.",
@@ -40,6 +46,7 @@ const options = {
       {
         scaleLabel: {
           display: true,
+          fontSize: 20,
           labelString: "Known Times (AM)",
         },
 
@@ -49,6 +56,7 @@ const options = {
               return value;
             }
           },
+          fontSize: 20,
         },
       },
     ],
@@ -56,6 +64,7 @@ const options = {
       {
         scaleLabel: {
           display: true,
+          fontSize: 20,
           labelString: "Blood Alcohol Concentration (g/ml)",
         },
         gridLines: {
@@ -65,9 +74,10 @@ const options = {
           min: 0,
           max: 0.5,
           stepSize: 0.04,
+          fontSize: 20,
           callback: function (value) {
             if (value === 0.16) {
-              return value;
+              return value + "%";
             }
           },
         },
@@ -130,55 +140,57 @@ const Index = () => {
   };
 
   return (
-    <Main
-      meta={
-        <Meta
-          title="Cannon Demonstrative"
-          description="The demonstrative for Dr. Robert Cannon - Gardner Consulting."
-        />
-      }
-    >
-      <div className="mx-16 my-10">
-        <div className="flex w-full">
-          <Line data={data} width={600} height={280} options={options}></Line>
+    <div>
+      <Main
+        meta={
+          <Meta
+            title="Cannon Demonstrative"
+            description="The demonstrative for Dr. Robert Cannon - Gardner Consulting."
+          />
+        }
+      >
+        <div className="mx-16 mt-10">
+          <div className="flex w-full">
+            <Line data={data} width={600} height={300} options={options}></Line>
+          </div>
+          <div className="flex justify-center w-full mt-6 text-xl">
+            <button
+              className={
+                "px-4 py-2 font-semibold bg-transparent border rounded hover:text-white transition duration-300 ease-in-out  " +
+                (!scenarioOneShown
+                  ? "opacity-25 text-green-700 border-green-500 hover:bg-green-500 hover:border-transparent"
+                  : "text-white bg-green-500 border-green-500 hover:border-transparent ")
+              }
+              onClick={() => applyScenarioOne()}
+            >
+              Scenario one
+            </button>
+            <button
+              className={
+                "transition duration-300 ease-in-out px-4 py-2 mx-16 font-semibold bg-transparent border rounded hover:text-white  " +
+                (!scenarioTwoShown
+                  ? "opacity-25 text-blue-700 border-blue-500 hover:bg-blue-500 hover:border-transparent"
+                  : "text-white bg-blue-500 border-blue-500 hover:border-transparent ")
+              }
+              onClick={() => applyScenarioTwo()}
+            >
+              Scenario two
+            </button>
+            <button
+              className={
+                "transition duration-300 ease-in-out px-4 py-2 font-semibold bg-transparent border rounded hover:text-white  " +
+                (!scenarioThreeShown
+                  ? "opacity-25 text-red-700 border-red-500 hover:bg-red-500 hover:border-transparent"
+                  : "text-white bg-red-500 border-red-500 hover:border-transparent ")
+              }
+              onClick={() => applyScenarioThree()}
+            >
+              Scenario three
+            </button>
+          </div>
         </div>
-        <div className="flex justify-center w-full mt-12">
-          <button
-            className={
-              "px-4 py-2 font-semibold bg-transparent border rounded hover:text-white transition duration-300 ease-in-out  " +
-              (!scenarioOneShown
-                ? "opacity-25 text-green-700 border-green-500 hover:bg-green-500 hover:border-transparent"
-                : "text-white bg-green-500 border-green-500 hover:border-transparent ")
-            }
-            onClick={() => applyScenarioOne()}
-          >
-            Scenario one
-          </button>
-          <button
-            className={
-              "transition duration-300 ease-in-out px-4 py-2 mx-16 font-semibold bg-transparent border rounded hover:text-white  " +
-              (!scenarioTwoShown
-                ? "opacity-25 text-blue-700 border-blue-500 hover:bg-blue-500 hover:border-transparent"
-                : "text-white bg-blue-500 border-blue-500 hover:border-transparent ")
-            }
-            onClick={() => applyScenarioTwo()}
-          >
-            Scenario two
-          </button>
-          <button
-            className={
-              "transition duration-300 ease-in-out px-4 py-2 font-semibold bg-transparent border rounded hover:text-white  " +
-              (!scenarioThreeShown
-                ? "opacity-25 text-red-700 border-red-500 hover:bg-red-500 hover:border-transparent"
-                : "text-white bg-red-500 border-red-500 hover:border-transparent ")
-            }
-            onClick={() => applyScenarioThree()}
-          >
-            Scenario three
-          </button>
-        </div>
-      </div>
-    </Main>
+      </Main>
+    </div>
   );
 };
 
