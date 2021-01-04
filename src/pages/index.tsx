@@ -16,12 +16,14 @@ const options = {
       fontSize: 16,
     },
   },
+  tooltips: { enabled: false },
+  hover: { mode: null },
   title: {
     display: true,
     text: "BAC Analysis - Robert Cannon M.D.",
     fontSize: 26,
     fontFamily: "'Helvetica'",
-    fontColor: "#374151http://127.0.0.1:4040  ",
+    fontColor: "rgba(0 , 0, 0, 0.65)",
   },
   annotation: {
     annotations: [
@@ -30,6 +32,20 @@ const options = {
         mode: "horizontal",
         scaleID: "y-axis-0",
         value: 0.16,
+        borderColor: "rgba(0, 0, 0, 0.1)",
+        borderWidth: 1,
+        borderDash: [10, 5],
+        showLine: false,
+        label: {
+          enabled: false,
+          content: "Test label",
+        },
+      },
+      {
+        type: "line",
+        mode: "vertical",
+        scaleID: "x-axis-0",
+        value: "2:58 AM",
         borderColor: "rgba(0, 0, 0, 0.1)",
         borderWidth: 1,
         borderDash: [10, 5],
@@ -49,7 +65,10 @@ const options = {
           fontSize: 20,
           labelString: "Known Times (AM)",
         },
-
+        gridLines: {
+          drawOnChartArea: false,
+          fontColor: "rgba(0 , 0, 0, 0.65)",
+        },
         ticks: {
           callback: function (value: String) {
             if (value === "2:58 AM") {
@@ -149,43 +168,46 @@ const Index = () => {
           />
         }
       >
-        <div className="mx-16 mt-10">
+        <div className="mx-16 mt-20">
           <div className="flex w-full">
             <Line data={data} width={600} height={300} options={options}></Line>
           </div>
           <div className="flex justify-center w-full mt-6 text-xl">
             <button
+              id="typical"
               className={
-                "px-4 py-2 font-semibold bg-transparent border rounded hover:text-white transition duration-300 ease-in-out  " +
+                "px-4 focus:outline-none focus:ring py-2 font-semibold bg-transparent border rounded hover:text-white transition duration-300 ease-in-out  " +
                 (!scenarioOneShown
                   ? "opacity-25 text-green-700 border-green-500 hover:bg-green-500 hover:border-transparent"
                   : "text-white bg-green-500 border-green-500 hover:border-transparent ")
               }
               onClick={() => applyScenarioOne()}
             >
-              Scenario #1
+              Typical Curve
             </button>
             <button
+              id="possible1"
               className={
-                "transition duration-300 ease-in-out px-4 py-2 mx-16 font-semibold bg-transparent border rounded hover:text-white  " +
+                "transition focus:outline-none focus:ring outline-none duration-300 ease-in-out px-4 py-2 mx-16 font-semibold bg-transparent border rounded hover:text-white  " +
                 (!scenarioTwoShown
                   ? "opacity-25 text-blue-700 border-blue-500 hover:bg-blue-500 hover:border-transparent"
                   : "text-white bg-blue-500 border-blue-500 hover:border-transparent ")
               }
               onClick={() => applyScenarioTwo()}
             >
-              Scenario #2
+              Possible Curve #1
             </button>
             <button
+              id="possible2"
               className={
-                "transition duration-300 ease-in-out px-4 py-2 font-semibold bg-transparent border rounded hover:text-white  " +
+                "transition focus:outline-none focus:ring outline-none duration-300 ease-in-out px-4 py-2 font-semibold bg-transparent border rounded hover:text-white  " +
                 (!scenarioThreeShown
                   ? "opacity-25 text-red-700 border-red-500 hover:bg-red-500 hover:border-transparent"
                   : "text-white bg-red-500 border-red-500 hover:border-transparent ")
               }
               onClick={() => applyScenarioThree()}
             >
-              Scenario #3
+              Possible Curve #2
             </button>
           </div>
         </div>
