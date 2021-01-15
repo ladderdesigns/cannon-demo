@@ -24,7 +24,7 @@ export const scenarioThree = {
 export const scenarioOne = {
   order: 2,
   data: [0.0, 0.09, 0.356, 0.16, 0.072, 0.04],
-  label: "Typical curve",
+  label: "General curve",
   backgroundColor: "#10B981",
   borderColor: "#10B981",
   pointRadius: [0, 0, 0, 0, 0, 0],

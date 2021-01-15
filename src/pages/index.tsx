@@ -75,7 +75,7 @@ const Index = () => {
       setScenarioOneShown(true);
     } else {
       const updatedDatasets: object[] = data.datasets.filter((dataset) => {
-        return dataset.label !== "Typical curve";
+        return dataset.label !== "General curve";
       });
       setData({ ...data, datasets: updatedDatasets });
       setScenarioOneShown(false);
@@ -126,7 +126,7 @@ const Index = () => {
           </div>
           <div className="flex justify-center w-full mt-6 text-xl">
             <button
-              id="typical"
+              id="general"
               className={
                 "px-4 focus:outline-none focus:ring py-2 font-semibold bg-transparent border rounded hover:text-white transition duration-300 ease-in-out  " +
                 (!scenarioOneShown
@@ -135,7 +135,7 @@ const Index = () => {
               }
               onClick={() => toggleScenarioOne()}
             >
-              Typical Curve
+              General Curve
             </button>
             <button
               id="possible1"
