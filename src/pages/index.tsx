@@ -63,7 +63,6 @@ const Index = () => {
         scales: updatedScales,
         annotation: updatedAnnotations,
       });
-
       setData({ ...data, datasets: updatedDatasets });
     }
   }
@@ -120,7 +119,7 @@ const Index = () => {
           />
         }
       >
-        <div className="mx-16 mt-20">
+        <div className="mx-16 mt-10">
           <div className="flex w-full">
             <Line data={data} width={600} height={300} options={options}></Line>
           </div>

@@ -12,7 +12,7 @@ export const oneMeasurement = {
 
 export const scenarioThree = {
   order: 1,
-  data: [0.0, 0.162, 0.474, 0.16, 0.081, 0.04],
+  data: [0.0, 0.162, 0.474, 0.16, 0.064, 0.01],
   label: "Possible curve #2",
   backgroundColor: "#EF4444",
   borderColor: "#EF4444",
@@ -23,7 +23,7 @@ export const scenarioThree = {
 
 export const scenarioOne = {
   order: 2,
-  data: [0.0, 0.09, 0.356, 0.16, 0.072, 0.04],
+  data: [0.0, 0.09, 0.356, 0.16, 0.085, 0.035],
   label: "General curve",
   backgroundColor: "#10B981",
   borderColor: "#10B981",
@@ -34,7 +34,7 @@ export const scenarioOne = {
 
 export const scenarioTwo = {
   order: 1,
-  data: [0.0, 0.072, 0.224, 0.16, 0.062, 0.04],
+  data: [0.0, 0.072, 0.224, 0.16, 0.102, 0.06],
   label: "Possible curve #1",
   backgroundColor: "#3B82F6",
   borderColor: "#3B82F6",
