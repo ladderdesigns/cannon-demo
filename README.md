@@ -8,7 +8,7 @@
 
 ## Description
 
-Cannon demo is the interactive demonstrative that I used to portray the expert witness Dr. Robert Cannon, for the 2020-2021 American Mock Trial Association season. 
+Cannon demo is the interactive demonstrative that I used to portray the expert witness Dr. Robert Cannon for the 2020-2021 American Mock Trial Association season. 
 
 ## Technologies
 
@@ -18,7 +18,7 @@ Cannon demo is the interactive demonstrative that I used to portray the expert w
 
 ## Acknowledgements
 
-Thank you to my coaches and teammates for the feedback - all of your input was greatly appreciated. Special thank you to my directing attorney Akshay for you hard work and enthuisiasm to compete.
+Thank you to my coaches and teammates for the feedback - all of your input was greatly appreciated. Special thank you to my directing attorney Akshay for your hard work and enthuisiasm to compete.
 
 ## License
 
