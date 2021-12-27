@@ -12,7 +12,7 @@ Cannon demo is the interactive demonstrative that I used to portray the expert w
 
 ## Technologies
 
-* Next
+* Next.js
 * Typescript
 * Chart.js
 
